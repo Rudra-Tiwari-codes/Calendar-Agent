@@ -44,6 +44,24 @@ class Reminder(Base):
     __table_args__ = (UniqueConstraint("event_id", "remind_at", name="uq_reminder_event_at"),)
 
 
+class Event(Base):
+    __tablename__ = "events"
+    id: Mapped[int] = mapped_column(Integer, primary_key=True, autoincrement=True)
+    user_id: Mapped[int] = mapped_column(Integer, nullable=False)
+    discord_user_id: Mapped[str] = mapped_column(String(32), nullable=False, index=True)
+    google_event_id: Mapped[str] = mapped_column(String(128), nullable=False, unique=True, index=True)
+    title: Mapped[str] = mapped_column(String(256), nullable=False)
+    description: Mapped[Optional[str]] = mapped_column(String(1024), nullable=True)
+    location: Mapped[Optional[str]] = mapped_column(String(256), nullable=True)
+    start_time: Mapped[datetime] = mapped_column(DateTime(timezone=True), nullable=False)
+    end_time: Mapped[datetime] = mapped_column(DateTime(timezone=True), nullable=False)
+    attendees: Mapped[Optional[str]] = mapped_column(String(512), nullable=True)  # JSON string
+    google_calendar_link: Mapped[Optional[str]] = mapped_column(String(512), nullable=True)
+    reminder_sent: Mapped[bool] = mapped_column(Boolean, default=False)
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=datetime.utcnow)
+    updated_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=datetime.utcnow, onupdate=datetime.utcnow)
+
+
 class EventTemplate(Base):
     __tablename__ = "event_templates"
     id: Mapped[int] = mapped_column(Integer, primary_key=True, autoincrement=True)

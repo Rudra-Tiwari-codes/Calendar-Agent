@@ -21,3 +21,13 @@ def decrypt_text(ciphertext: str) -> str:
     return f.decrypt(ciphertext.encode("utf-8")).decode("utf-8")
 
 
+def encrypt_token(token_data: str) -> str:
+    """Encrypt a token (JSON string) for storage."""
+    return encrypt_text(token_data)
+
+
+def decrypt_token(encrypted_token: str) -> str:
+    """Decrypt a token for use."""
+    return decrypt_text(encrypted_token)
+
+
