@@ -4,9 +4,9 @@ A comprehensive calendar management system with Discord bot integration and Goog
 
 ## Project Structure
 
-- `chatbot/` - Core chatbot functionality with OpenAI integration
-- `events-agent/` - Event management system with Discord bot
-- `events-agent-update/` - Updated version of the events agent
+- `events-agent/` - Unified calendar agent with Discord bot, web API, and chatbot functionality
+  - `src/events_agent/` - Core event management system
+  - `src/events_agent/chatbot/` - OpenAI-powered chatbot tools for calendar operations
 
 ## Features
 
@@ -27,16 +27,15 @@ A comprehensive calendar management system with Discord bot integration and Goog
 
 ## Components
 
-### Chatbot
-- OpenAI integration
-- Tool system for calendar operations
-- News and stock price tools
-
 ### Events Agent
 - Discord bot with slash commands
 - Google Calendar integration
 - Event templates and reminders
 - Database persistence
+- OpenAI-powered chatbot with tools for:
+  - Calendar operations (create, update, delete, find events)
+  - News and stock price information
+  - Calculator functionality
 
 ## Security
 
