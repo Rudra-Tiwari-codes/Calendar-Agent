@@ -8,6 +8,9 @@ from __future__ import annotations
 from alembic import op
 import sqlalchemy as sa
 
+revision = '4e28fbd68bba'
+down_revision = '0002'
+
 
 def upgrade() -> None:
     pass

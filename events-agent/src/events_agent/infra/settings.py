@@ -25,9 +25,9 @@ class Settings(BaseSettings):
     google_client_secret: str | None = None
     oauth_redirect_uri: str | None = None
 
-    # Supabase (optional)
+    # Supabase
     supabase_url: str | None = None
-    supabase_anon_key: str | None = None
+    supabase_key: str | None = None
 
     # Logging
     log_level: str = "INFO"
