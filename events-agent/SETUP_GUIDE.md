@@ -1,6 +1,6 @@
-# 🚀 Calendar Agent Setup Guide
+# Calendar Agent Setup Guide
 
-## Quick Setup (5 minutes)
+## Quick Setup
 
 ### Step 1: Environment Setup
 ```bash
@@ -45,7 +45,7 @@ python quick_test.py
 python run_bot.py
 ```
 
-## 🔍 Getting Your Supabase Credentials
+## Getting Your Supabase Credentials
 
 1. Go to [supabase.com](https://supabase.com)
 2. Sign up with dscubed email
@@ -57,7 +57,7 @@ python run_bot.py
 6. Go to Settings → Database
 7. Copy connection string → `DATABASE_URL`
 
-## 🤖 Discord Bot Setup
+## Discord Bot Setup
 
 1. Go to [Discord Developer Portal](https://discord.com/developers/applications)
 2. Create New Application → "Calendar Agent"
@@ -65,22 +65,22 @@ python run_bot.py
 4. Bot Permissions: Send Messages, Use Slash Commands
 5. Invite bot to your server
 
-## ✅ Testing Your Setup
+## Testing Your Setup
 
 After running `quick_test.py`, you should see:
-- ✅ Environment variables loaded
-- ✅ Database connection successful
-- ✅ Discord bot creation successful
-- ✅ All imports working
+- Environment variables loaded
+- Database connection successful
+- Discord bot creation successful
+- All imports working
 
-## 🎯 Test Commands in Discord
+## Test Commands in Discord
 
 1. `/ping` - Test bot is online
 2. `/addevent tomorrow 3pm Team meeting` - Create event
 3. `/myevents` - List upcoming events  
 4. `/set-tz America/New_York` - Set timezone
 
-## 🐛 Troubleshooting
+## Troubleshooting
 
 **Database connection failed?**
 - Check your Supabase credentials
@@ -95,7 +95,7 @@ After running `quick_test.py`, you should see:
 - Run `uv sync` to install all dependencies
 - Check you're in the events-agent directory
 
-## 🚨 Common Issues & Fixes
+## Common Issues and Fixes
 
 1. **"Table doesn't exist"** → Database migrations not run
    ```bash

@@ -1,19 +1,19 @@
-# 📅 Calendar Agent
+# Calendar Agent
 
-A powerful Discord bot that seamlessly integrates with Google Calendar, allowing users to manage events, set reminders, and coordinate schedules directly from Discord. Built with FastAPI, SQLAlchemy, and modern async Python.
+A comprehensive Discord bot that integrates with Google Calendar for seamless event management. Built with FastAPI, SQLAlchemy, and modern async Python for production-grade performance.
 
-## ✨ Features
+## Features
 
-- **🤖 Discord Integration**: Native Discord slash commands for intuitive calendar management
-- **📊 Google Calendar Sync**: Full OAuth2 integration with Google Calendar API
-- **⏰ Smart Reminders**: Automated event reminders with configurable timing
-- **🌍 Timezone Support**: Multi-timezone awareness with user-specific settings
-- **📝 Natural Language**: Parse natural language date/time expressions
-- **🔒 Secure**: Encrypted token storage and secure OAuth flow
-- **📈 Monitoring**: Built-in Prometheus metrics and health checks
-- **🏗️ Production Ready**: Async architecture with proper error handling and logging
+- **Discord Integration**: Native Discord slash commands for calendar management
+- **Google Calendar Sync**: Full OAuth2 integration with Google Calendar API
+- **Smart Reminders**: Automated event reminders with configurable timing
+- **Timezone Support**: Multi-timezone awareness with user-specific settings
+- **Natural Language**: Parse natural language date and time expressions
+- **Security**: Encrypted token storage and secure OAuth flow
+- **Monitoring**: Built-in Prometheus metrics and health checks
+- **Production Ready**: Async architecture with comprehensive error handling and logging
 
-## 🚀 Quick Start
+## Quick Start
 
 ### Prerequisites
 
@@ -39,7 +39,7 @@ A powerful Discord bot that seamlessly integrates with Google Calendar, allowing
    
    # Database Configuration
    # For Supabase (production):
-   DATABASE_URL=postgresql+asyncpg://postgres.your_project:DSCubedAIAgents2025@aws-0-ap-southeast-2.pooler.supabase.com:6543/postgres
+   DATABASE_URL=postgresql+asyncpg://postgres:[YOUR_PASSWORD]@db.[YOUR_PROJECT_ID].supabase.co:6543/postgres
    # For SQLite (development):
    # DATABASE_URL=sqlite+aiosqlite:///./events_agent.db
    
@@ -76,7 +76,7 @@ A powerful Discord bot that seamlessly integrates with Google Calendar, allowing
    uv run python -m events_agent.main
    ```
 
-## 🎯 Discord Commands
+## Discord Commands
 
 | Command | Description | Example |
 |---------|-------------|---------|
@@ -87,7 +87,7 @@ A powerful Discord bot that seamlessly integrates with Google Calendar, allowing
 | `/set-tz` | Set your timezone | `/set-tz timezone:Australia/Melbourne` |
 | `/suggest` | Find optimal meeting times | `/suggest duration_minutes:60 days_ahead:7` |
 
-## 🔧 API Endpoints
+## API Endpoints
 
 The bot also exposes a REST API for programmatic access:
 
@@ -96,7 +96,7 @@ The bot also exposes a REST API for programmatic access:
 - **`GET /metrics`** - Prometheus metrics for monitoring
 - **`GET /oauth/callback`** - OAuth callback for Google Calendar integration
 
-## 🏗️ Architecture
+## Architecture
 
 ```
 src/events_agent/
@@ -117,7 +117,7 @@ src/events_agent/
 - **Robust Error Handling**: Comprehensive error handling with structured logging
 - **Database Migrations**: Alembic for schema management
 
-## 🧪 Testing
+## Testing
 
 ### Run the Test Suite
 
@@ -126,12 +126,12 @@ uv run python test_calendar_agent.py
 ```
 
 This will test:
-- ✅ Database connection
-- ✅ Natural language parsing
-- ✅ Google Calendar credentials
-- ✅ Discord bot token
-- ✅ Settings configuration
-- ✅ Event details extraction
+- Database connection
+- Natural language parsing
+- Google Calendar credentials
+- Discord bot token
+- Settings configuration
+- Event details extraction
 
 ### Manual Testing Flow
 
@@ -154,7 +154,7 @@ This will test:
    - Create an event with a reminder
    - Wait for the reminder notification in Discord
 
-## 🐳 Docker Deployment
+## Docker Deployment
 
 ```dockerfile
 FROM python:3.12-slim AS base
@@ -166,7 +166,7 @@ RUN uv sync --frozen
 CMD ["uv", "run", "python", "-m", "events_agent.main"]
 ```
 
-## 🛠️ Development
+## Development
 
 ### Database Migrations
 
@@ -194,21 +194,21 @@ uvx --from mypy mypy src
 uvx --from ruff ruff format .
 ```
 
-## 📊 Monitoring & Observability
+## Monitoring and Observability
 
 - **Structured Logging**: JSON-formatted logs with correlation IDs
 - **Prometheus Metrics**: Built-in metrics for monitoring bot performance
 - **Health Checks**: Kubernetes-ready health and readiness endpoints
 - **Error Tracking**: Comprehensive error handling and reporting
 
-## 🔐 Security Features
+## Security Features
 
 - **OAuth2 Flow**: Secure Google Calendar integration
 - **Token Encryption**: Fernet encryption for stored OAuth tokens
 - **Input Validation**: Pydantic models for request validation
 - **Rate Limiting**: Built-in rate limiting for API endpoints
 
-## 🚨 Troubleshooting
+## Troubleshooting
 
 ### Common Issues
 
@@ -235,7 +235,7 @@ uvx --from ruff ruff format .
 
 Set `LOG_LEVEL=DEBUG` in your `.env` file for detailed logging.
 
-## 🤝 Contributing
+## Contributing
 
 1. Fork the repository
 2. Create a feature branch (`git checkout -b feature/amazing-feature`)
@@ -243,19 +243,17 @@ Set `LOG_LEVEL=DEBUG` in your `.env` file for detailed logging.
 4. Push to the branch (`git push origin feature/amazing-feature`)
 5. Open a Pull Request
 
-## 📝 License
+## License
 
 This project is licensed under the MIT License - see the LICENSE file for details.
 
-## 🆘 Support
+## Support
 
 For support, please open an issue in the GitHub repository or contact the maintainers.
 
 ---
 
-**Built with ❤️ using Python, FastAPI, Discord.py, and Google Calendar API**
-
-## 🔑 API Keys Setup Guide
+## API Keys Setup Guide
 
 ### Discord Bot Setup
 
@@ -287,4 +285,3 @@ For support, please open an issue in the GitHub repository or contact the mainta
 4. Copy the connection string and update `DATABASE_URL`
 5. Copy the anon key to `SUPABASE_ANON_KEY`
 
-**Database Password:** `DSCubedAIAgents2025`
