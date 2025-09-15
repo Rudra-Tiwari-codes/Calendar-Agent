@@ -12,11 +12,11 @@ from datetime import datetime, timedelta, timezone
 # Add the src directory to the path
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), 'src'))
 
-from events_agent.infra.date_parsing import parse_natural_datetime, parse_natural_range, extract_event_details
-from events_agent.infra.settings import settings
-from events_agent.infra.db import db_ping, get_engine
-from events_agent.domain.models import Base
-from events_agent.infra.logging import configure_logging, get_logger
+from src.events_agent.infra.date_parsing import parse_natural_datetime, parse_natural_range, extract_event_details
+from src.events_agent.infra.settings import settings
+from src.events_agent.infra.db import db_ping, get_engine
+from src.events_agent.domain.models import Base
+from src.events_agent.infra.logging import configure_logging, get_logger
 
 
 async def test_database_connection():

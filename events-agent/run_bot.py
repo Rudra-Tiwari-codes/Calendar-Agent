@@ -11,5 +11,5 @@ sys.path.insert(0, os.path.join(os.path.dirname(__file__), 'src'))
 
 # Now import and run the main module
 if __name__ == "__main__":
-    from events_agent.main import main
+    from src.events_agent.main import main
     main()

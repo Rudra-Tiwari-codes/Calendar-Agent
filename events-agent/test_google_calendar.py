@@ -12,8 +12,8 @@ from datetime import datetime, timedelta
 # Add the src directory to the path
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), 'src'))
 
-from events_agent.adapters.gcal import create_event, list_events
-from events_agent.infra.settings import settings
+from src.events_agent.adapters.gcal import create_event, list_events
+from src.events_agent.infra.settings import settings
 
 
 async def test_google_calendar_api():
