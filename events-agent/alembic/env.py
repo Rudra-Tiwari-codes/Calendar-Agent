@@ -9,8 +9,8 @@ from sqlalchemy.engine import Connection
 from sqlalchemy.ext.asyncio import AsyncEngine, create_async_engine
 from alembic import context
 
-from src.events_agent.infra.settings import settings
-from src.events_agent.domain.models import Base
+from events_agent.infra.settings import settings
+from events_agent.domain.models import Base
 
 
 config = context.config

@@ -7,9 +7,9 @@ import sys
 import os
 
 # Add the src directory to Python path
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), 'src'))
+sys.path.insert(0, os.path.dirname(__file__))
 
 # Now import and run the main module
 if __name__ == "__main__":
-    from src.events_agent.main import main
+    from events_agent.main import main
     main()
