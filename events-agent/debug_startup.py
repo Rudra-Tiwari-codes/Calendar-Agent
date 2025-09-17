@@ -6,8 +6,6 @@ Debug startup script to identify issues
 import sys
 import os
 
-# Add the src directory to Python path
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), 'src'))
 
 def test_imports():
     """Test all imports step by step."""
@@ -20,32 +18,32 @@ def test_imports():
         print("✅ Basic imports OK")
         
         print("2. Testing events_agent imports...")
-        from src.events_agent.infra.settings import settings
+        from events_agent.infra.settings import settings
         print("✅ Settings import OK")
         
         print("3. Testing logging...")
-        from src.events_agent.infra.logging import configure_logging, get_logger
+        from events_agent.infra.logging import configure_logging, get_logger
         configure_logging()
         logger = get_logger()
         print("✅ Logging OK")
         
         print("4. Testing FastAPI app...")
-        from src.events_agent.app.http import create_app
+        from events_agent.app.http import create_app
         app = create_app()
         print("✅ FastAPI app OK")
         
         print("5. Testing Discord bot...")
-        from src.events_agent.bot.discord_bot import build_bot
+        from events_agent.bot.discord_bot import build_bot
         discord_client = build_bot()
         print("✅ Discord bot OK")
         
         print("6. Testing services...")
-        from src.events_agent.services.reminder_service import ReminderService
+        from events_agent.services.reminder_service import ReminderService
         reminder_service = ReminderService(discord_client)
         print("✅ Reminder service OK")
         
         print("7. Testing scheduler...")
-        from src.events_agent.infra.scheduler import start_scheduler, set_reminder_service
+        from events_agent.infra.scheduler import start_scheduler, set_reminder_service
         set_reminder_service(reminder_service)
         scheduler = start_scheduler()
         print("✅ Scheduler OK")
@@ -64,7 +62,7 @@ def test_settings():
     print("\n🔍 Testing settings...")
     
     try:
-        from src.events_agent.infra.settings import settings
+        from events_agent.infra.settings import settings
         
         print(f"Discord token: {'✅ Set' if settings.discord_token else '❌ Missing'}")
         print(f"Database URL: {'✅ Set' if settings.database_url else '❌ Missing'}")
@@ -83,10 +81,10 @@ async def test_async_startup():
     print("\n🔍 Testing async startup...")
     
     try:
-        from src.events_agent.infra.settings import settings
-        from src.events_agent.infra.logging import configure_logging, get_logger
-        from src.events_agent.app.http import create_app
-        from src.events_agent.bot.discord_bot import build_bot
+        from events_agent.infra.settings import settings
+        from events_agent.infra.logging import configure_logging, get_logger
+        from events_agent.app.http import create_app
+        from events_agent.bot.discord_bot import build_bot
         
         configure_logging()
         logger = get_logger()

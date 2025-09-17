@@ -36,8 +36,8 @@ async def test_integration():
     # Test 2: Database Connection
     print("\n2. Testing Database Connection...")
     try:
-        from src.events_agent.infra.db import get_engine, session_scope
-        from src.events_agent.domain.models import Base
+        from events_agent.infra.db import get_engine, get_session_factory
+        from events_agent.domain.models import Base
         
         engine = get_engine()
         async with engine.begin() as conn:
@@ -45,7 +45,8 @@ async def test_integration():
         print("✅ Database connection successful, tables created")
         
         # Test database query
-        async with session_scope() as session:
+        session_factory = get_session_factory()
+        async with session_factory() as session:
             from sqlalchemy import text
             result = await session.execute(text("SELECT 1"))
             print("✅ Database query test successful")
@@ -57,7 +58,7 @@ async def test_integration():
     # Test 3: Discord Bot Import
     print("\n3. Testing Discord Bot...")
     try:
-        from src.events_agent.bot.discord_bot import build_bot
+        from events_agent.bot.discord_bot import build_bot
         bot = build_bot()
         print("✅ Discord bot creation successful")
     except Exception as e:
@@ -67,7 +68,7 @@ async def test_integration():
     # Test 4: Natural Language Parsing
     print("\n4. Testing Natural Language Parsing...")
     try:
-        from src.events_agent.infra.date_parsing import parse_natural_datetime
+        from events_agent.infra.date_parsing import parse_natural_datetime
         result = parse_natural_datetime("tomorrow 3pm")
         print(f"✅ Date parsing successful: {result}")
     except Exception as e:
@@ -77,7 +78,7 @@ async def test_integration():
     # Test 5: Google Calendar Service
     print("\n5. Testing Google Calendar Service...")
     try:
-        from src.events_agent.services.calendar_service import GoogleCalendarService
+        from events_agent.services.calendar_service import GoogleCalendarService
         print("✅ Google Calendar service import successful")
     except Exception as e:
         print(f"❌ Google Calendar service failed: {e}")

@@ -9,8 +9,6 @@ import asyncio
 import signal
 from datetime import datetime
 
-# Add the src directory to Python path
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), 'src'))
 
 def signal_handler(sig, frame):
     """Handle Ctrl+C gracefully."""
@@ -24,18 +22,18 @@ async def main():
     
     try:
         # Import and configure logging
-        from src.events_agent.infra.logging import configure_logging, get_logger
+        from events_agent.infra.logging import configure_logging, get_logger
         configure_logging()
         logger = get_logger()
         logger.info("calendar_agent_starting")
         
         # Import settings
-        from src.events_agent.infra.settings import settings
+        from events_agent.infra.settings import settings
         print(f"📡 HTTP Server will run on: http://{settings.http_host}:{settings.http_port}")
         print(f"🤖 Discord Bot Token: {'✅ Configured' if settings.discord_token else '❌ Missing'}")
         
         # Import Discord bot
-        from src.events_agent.bot.discord_bot import build_bot
+        from events_agent.bot.discord_bot import build_bot
         print("🔧 Building Discord bot...")
         discord_client = build_bot()
         
