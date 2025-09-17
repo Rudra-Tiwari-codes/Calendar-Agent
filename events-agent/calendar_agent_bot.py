@@ -11,21 +11,20 @@ import json
 from datetime import datetime, timedelta
 from typing import Optional, List, Dict, Any
 
-# Add the src directory to Python path
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), 'src'))
+# Add the events_agent directory to Python path if needed
 
 import discord
 from discord.ext import commands
 from discord import app_commands
 
 # Import our modules
-from src.events_agent.infra.settings import settings
-from src.events_agent.infra.logging import configure_logging, get_logger
-from src.events_agent.infra.date_parsing import parse_natural_datetime, extract_event_details
-from src.events_agent.infra.db import session_scope
-from src.events_agent.domain.models import User, Event, Reminder
-from src.events_agent.services.calendar_service import GoogleCalendarService
-from src.events_agent.infra.event_repository import EventRepository, UserRepository, ReminderRepository
+from events_agent.infra.settings import settings
+from events_agent.infra.logging import configure_logging, get_logger
+from events_agent.infra.date_parsing import parse_natural_datetime, extract_event_details
+from events_agent.infra.db import session_scope
+from events_agent.domain.models import User, Event, Reminder
+from events_agent.services.calendar_service import GoogleCalendarService
+from events_agent.infra.event_repository import EventRepository, UserRepository, ReminderRepository
 
 # Configure logging
 configure_logging()
