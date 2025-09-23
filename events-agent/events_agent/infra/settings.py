@@ -10,6 +10,7 @@ class Settings(BaseSettings):
     http_host: str = "0.0.0.0"
     http_port: int = 8000
     default_tz: str = "Australia/Melbourne"
+    base_url: str | None = None  # Set this for production (e.g., https://your-app.railway.app)
 
     # Discord
     discord_token: str | None = None

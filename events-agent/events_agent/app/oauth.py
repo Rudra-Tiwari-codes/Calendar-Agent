@@ -44,26 +44,29 @@ def _consume_state(state: str) -> str:
 
 @router.get("/oauth/start")
 async def oauth_start(discord_id: str = Query(...)) -> JSONResponse:
-    if not settings.supabase_url:
-        raise HTTPException(status_code=500, detail="supabase_not_configured")
+    if not settings.google_client_id:
+        raise HTTPException(status_code=500, detail="google_oauth_not_configured")
     
     state = _make_state(discord_id)
     
-    # Use Supabase Auth with Google provider
-    # This will redirect to Google, then back to Supabase, then to your success page
-    supabase_auth_url = f"{settings.supabase_url.rstrip('/')}/auth/v1/authorize"
+    # Use direct Google OAuth (simpler and more reliable)
+    # Get the base URL from settings or environment
+    base_url = getattr(settings, 'base_url', None) or f"http://localhost:{settings.http_port}"
+    redirect_uri = f"{base_url}/auth/success"
+    
     params = {
-        "provider": "google",
-        "redirect_to": f"http://localhost:8000/auth/success",  # Where Supabase redirects after auth
-        "state": state,
-        # Add Google-specific parameters for refresh token
+        "response_type": "token",  # Use implicit flow for direct token
+        "client_id": settings.google_client_id,
+        "redirect_uri": redirect_uri,
+        "scope": "openid email https://www.googleapis.com/auth/calendar https://www.googleapis.com/auth/calendar.events",
         "access_type": "offline",
         "prompt": "consent",
-        "scope": "openid email https://www.googleapis.com/auth/calendar https://www.googleapis.com/auth/calendar.events"
+        "state": state,
     }
     from urllib.parse import urlencode
 
-    url = f"{supabase_auth_url}?{urlencode(params)}"
+    url = f"https://accounts.google.com/o/oauth2/v2/auth?{urlencode(params)}"
+    logger.info("oauth_url_generated", url=url, discord_id=discord_id)
     return JSONResponse({"url": url, "state": state})
 
 
