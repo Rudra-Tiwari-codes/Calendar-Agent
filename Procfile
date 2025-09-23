@@ -1,1 +1,1 @@
-web: cd events-agent && python start_bot.py
+web: cd events-agent && python -m events_agent.main
