@@ -1,0 +1,1 @@
+web: cd events-agent && python start_bot.py
