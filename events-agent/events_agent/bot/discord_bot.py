@@ -49,7 +49,8 @@ def build_bot() -> DiscordClient:
     @client.tree.command(name="connect", description="Link your Google Calendar account")
     async def connect_command(interaction: discord.Interaction) -> None:
         user_id = interaction.user.id
-        base = f"http://{settings.http_host}:{settings.http_port}"
+        # Use BASE_URL for production, fallback to localhost for development
+        base = settings.base_url or f"http://{settings.http_host}:{settings.http_port}"
         url = f"{base}/oauth/start?discord_id={user_id}"
         
         embed = discord.Embed(
